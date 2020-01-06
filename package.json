@@ -1,0 +1,52 @@
+{
+  "name": "provide-consume-decorator",
+  "version": "1.0.0",
+  "description": "Provider/consumer decorators for javascript classes",
+  "main": "js/index.js",
+  "scripts": {
+    "test": "ava",
+    "clean": "rimraf ./es ./js",
+    "tslint": "tslint -p tsconfig.json",
+    "tsc": "tsc",
+    "babel": "babel --source-maps -d js es",
+    "compile": "npm run tsc && npm run babel",
+    "watch": "ava -w",
+    "prepublish": "npm run clean && npm run tslint && npm run test && npm run compile"
+  },
+  "keywords": [],
+  "author": "Anton Nesterov",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/plugin-proposal-object-rest-spread": "^7.7.7",
+    "@babel/plugin-transform-runtime": "^7.7.6",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/runtime": "^7.7.7",
+    "@types/node": "^13.1.4",
+    "ava": "^2.4.0",
+    "esm": "^3.2.25",
+    "rimraf": "^3.0.0",
+    "ts-node": "^8.5.4",
+    "tslint": "^5.20.1",
+    "typescript": "^3.7.4"
+  },
+  "peerDependencies": {
+    "@babel/runtime": "^7.7.7"
+  },
+  "types": "es/index.d.ts",
+  "module": "es/index.js",
+  "ava": {
+    "compileEnhancements": false,
+    "extensions": [
+      "ts"
+    ],
+    "files": [
+      "./ts/**/*.test.ts"
+    ],
+    "require": [
+      "esm",
+      "ts-node/register"
+    ]
+  }
+}
